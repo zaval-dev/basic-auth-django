@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 # Si se ha enviado el metodo POST obtenemos los valores enviados en el request de usuario y contraseña
 # Utilizamos AUTHENTICATE que recibe el request y las credenciales
-# Si coindicen correctamente, utilizamos login que recibe request y el usuario autenticado
+# Si coindicen, utilizamos login que recibe request y el usuario autenticado
 
 def login_view(request):
     if request.method == 'POST':
@@ -19,7 +19,7 @@ def login_view(request):
             login(request, user)
             return redirect ('index')
         else:
-            return render(request, 'authentication\login.html', {'error': 'Credenciales incorrectas.'})
+            return render(request, 'authentication\login.html', {'error': 'Incorrect credentials.'})
     return render(request, 'authentication\login.html')
 
 #Register
@@ -39,7 +39,7 @@ def home(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'authentication\prueba.html')
+    return render(request, 'authentication/test.html')
 
 @login_required
 def logout_view(request):
